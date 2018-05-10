@@ -9,7 +9,7 @@ Convolutional Neural Networks can be used for segmentation of medical structures
 
 ## General Note
 
-Since this project is a *work in progress*, I haven't yet uploaded any code snippets or basically gone into any kind of detail yet :no_mouth:. But, rest assured I will soon. Keep checking this space for more information.
+Since this project is a *work in progress*, I haven't uploaded any code snippets or basically gone into any kind of detail yet :no_mouth:. But, rest assured I will soon. Keep checking this space for more information.
 
 ## Built With
 
@@ -19,7 +19,7 @@ Since this project is a *work in progress*, I haven't yet uploaded any code snip
 
 ## Authors
 
-* [Lalith Nag](https://github.com/lalithnag).
+* [Lalith Nag](https://github.com/lalithnag)
 * **Kavya Raju** - M.Sc. in Medical Systems Engineering at Otto-von-Guericke University, Magdeburg
 
 ## License
