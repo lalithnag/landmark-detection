@@ -1,81 +1,52 @@
 
-# Project Title
+# Landmark detection in echocardiography
 
-One Paragraph of project description goes here
+Mitral insufficiency is a major problem of the heart where surgery is required. This project aims to automatically segment the mitral valve of the heart using Deep Learning, with the 3D U-Net architecture.
 
-## Getting Started
+## Multi-modal registration
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Without going into specific details about the project, let me talk about multi-modal 3D registration which is applicable to a wide variety of applications.
 
-### Prerequisites
+There are a few broad categories of registration based on the assumptions we make about the two volumes.
 
-What things you need to install the software and how to install them
+### Rigid Registration
 
-```
-Give examples
-```
+When we assume that these volumes are rigid, then what we are doing is a simple *affine transform* of one of the volumes - which is essentially composed of elementary operations such as rotation, translation, scaling and shearing. This kind of registration basically moves the volume in space in a way that preserves lines and doesn't *warp* or *deform* the volume.
 
-### Installing
+#### Implementation
 
-A step by step series of examples that tell you have to get a development env running
+Affine registration can be implemented through the modules **RegistrationManual** or **AffineTransformation3D** modules in MevisLab.
 
-Say what the step will be
+* [AffineTransformation3D](https://mevislabdownloads.mevis.de/docs/2.8/MeVisLab/Standard/Documentation/Publish/ModuleReference/AffineTransformation3D.html) - MeVisLab Module Documentation
+* [Affine Transformations](https://mevislabdownloads.mevis.de/docs/2.4/MeVisLab/Resources/Documentation/Publish/SDK/GettingStarted/ch11s04.html) - MeVisLab Topic Documentation
+* [Comprehensive MeVisLab Documentation](https://mevislabdownloads.mevis.de/docs/current/MeVisLab/Resources/Documentation/Publish/SDK/MeVisLabManual/index.html)
 
-```
-Give the example
-```
+*There is a major caveat in terms of co-ordinate systems, which is crucial to performing registration in medical volumes. I will explain that in further sections.*
 
-And repeat
+### Elastic Registration
 
-```
-until finished
-```
+*Elastic* or *Deformable* registration is more representative of how the two medical volumes are related. This is because, there are motion and breathing artefacts from the patient that require a non-uniform mapping between the images. In contrast to affine registration which is a global transform - meaning, the entire volume was transformed by the same parameters; deformable registration is a local transform that acts on local patches of the image. This is performed by computing a vector field. One way to do this is the Demon's algorithm, from Euler-Lagrangian based regularisation methods (🚨 *Hardcore math alert* 🚨).
 
-End with an example of getting some data out of the system or using it for a little demo
+Generally, when we have two medical volumes, rigid registration is applied first - to sort of understand the global transformation, after which it is made more accurate by elastically deforming the volume.
 
-## Running the tests
+#### Implementation
 
-Explain how to run the automated tests for this system
+Deformable registration can be implemented in MeVisLab using the **ImageWarp** module.
 
-### Break down into end to end tests
+* [ImageWarp](https://mevislabdownloads.mevis.de/docs/3.0/FMEwork/ReleaseMeVis/Documentation/Publish/ModuleReference/ImageWarp.html) - MeVisLab Documentation
+* [Comprehensive MeVisLab Documentation](https://mevislabdownloads.mevis.de/docs/current/MeVisLab/Resources/Documentation/Publish/SDK/MeVisLabManual/index.html)
 
-Explain what these tests test and why
+### Co-ordinate Systems
 
-```
-Give an example
-```
+This is a common pitfall when working with registration. If you aren't aware of the different co-ordinate systems you are most likely to spend (waste) a lot of time trying to figure out why things don't fit together. So it would do you a lot of good to equip yourself with this knowledge before-hand.
 
-### And coding style tests
+I am planning to write a separate blog-post outlining the problems I faced, but until then here is a great link that elucidates this concept in medical scenarios:
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+[Helpful co-ordinate guide](http://www.grahamwideman.com/gw/brain/orientation/orientterms.htm)
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Lalith nag** - [Github profile](https://github.com/lalithnag). Drop me a line if you want to know more or you're stuck at some place! :smiley: I will put up more elaborate blog posts soon. Until then, you can email me at lalith.sharan@ovgu.de
 
 ## License
 
@@ -83,6 +54,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* A **huge** thanks to Dr. Marko Rak & Anneke Meyer :bow:, my project supervisors for guiding me through many tasks and patiently answering all my questions.
+* This project is undertaken (and is currently ongoing) in the capacity of a *Student Research Assistant* at the *Computer Assisted Surgeries* group at the *Otto-von-Guericke University*, Magdeburg.
