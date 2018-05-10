@@ -3,11 +3,11 @@
 
 The mitral valve is a valve in the heart, which contains two leaflets, an annulus which forms a ring around the valve leaflet and the papillary muscles which keep everything together. A malfunction of the mitral valve can cause many heart disorders and *valvular* diseases. In some cases, surgery is required to fix these problems. This is quite a daunting task, as the surgeons have a restricted view of this heart valve, especially via an Ultrasound image. This is where an automatic segmentation of the valve using CNN's can play a pivotal role in drastically improving the quality of surgical decisions.
 
-## CNN
+## CNN's
 
 Convolutional Neural Networks can be used for segmentation of medical structures, when adequate expert data is provided. This project uses a U-Net architecture to segment the mitral valve.
 
-### General Note
+## General Note
 
 Since this project is a *work in progress*, I haven't yet uploaded any code snippets or basically gone into any kind of detail yet :no_mouth:. But, rest assured I will soon. Keep checking this space for more information.
 
@@ -19,7 +19,7 @@ Since this project is a *work in progress*, I haven't yet uploaded any code snip
 
 ## Authors
 
-* **Lalith nag** - [Github profile](https://github.com/lalithnag).
+* [Lalith Nag](https://github.com/lalithnag).
 * **Kavya Raju** - M.Sc. in Medical Systems Engineering at Otto-von-Guericke University, Magdeburg
 
 ## License
