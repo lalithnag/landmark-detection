@@ -30,5 +30,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* A **huge** thanks to Dr. Sandy Engelhardt :bow:, our project supervisor for hand-holding us in our journey into ML for Medical Applications.
 * This project was undertaken as a team project in the *Computer Assisted Surgeries* group at the *Otto-von-Guericke University*, Magdeburg.
